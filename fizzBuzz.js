@@ -14,4 +14,5 @@ const FizzBuzz = () => {
 
 console.log(FizzBuzz());
 
+//time O(1) bc its always printing to 100? wouod be O(n) if it was dependant on an input
 

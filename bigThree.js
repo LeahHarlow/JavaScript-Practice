@@ -28,3 +28,6 @@ console.log(findThreeLargestNumbers([-1,2,57,36,22,10])) //[22,36,57]
 console.log(findThreeLargestNumbers([57,10])) //-1
 
 console.log(findThreeLargestNumbers([346,-1,200,573])) //[22,36,57]
+
+//time O(N) because 1 for loop and drop the contants
+//space is O(1)

@@ -1,18 +1,18 @@
 //coz we can streamline this
 
 //vars
-let recipient = '';
+let recipient = 'Quora';
 let title = '';
-let company = '';
+let company = 'Quora';
 let companyAddress = '';
-let position = '';
+let position = 'Product Engineer';
 let reason = '';
 
 let headerBit = `${recipient} \n ${title} \n ${company} \n ${companyAddress}\n ${position}`;
 
 let body = `Dear ${recipient},
 
-My name is Leah Ball Hamilton, and I am a graduate from the Grace Hopper Program at Fullstack Academy. I am writing to you today because I would love to be considered for the ${position} position available at ${company}.
+My name is Leah Hamilton, and I am a graduate from the Grace Hopper Program at Fullstack Academy. I am writing to you today because I would love to be considered for the ${position} position available at ${company}.
 
   Prior to becoming a Software Engineer, I was working in the service industry to put myself through my undergraduate degree in Communication from the University of California Santa Barbara. I am very grateful for this time as the service industry allowed me to not only support myself while in school full time and to travel, but also allowed me to gain experience remaining focused in a fast paced and often stressful work environment while maintaining professional, friendly and effective communication. While I will always respect for the service industry and am grateful for what it has provided me, I knew that ultimately I needed something more technically challenging with more room for growth and impact.
 

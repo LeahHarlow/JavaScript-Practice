@@ -1,4 +1,4 @@
-/* given an arrau and a target number, mutate the array in place and return the array with
+/* given an array and a target number, mutate the array in place and return the array with
 all of the target numbers moved to the end of the array. The order of the array does not matter other than
 the target numbers all being moved to the end */
 

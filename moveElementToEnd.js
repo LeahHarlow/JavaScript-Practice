@@ -24,3 +24,5 @@ console.log(moveElementToEnd([], 2)) //expect []
 console.log(moveElementToEnd([2,-5,3,5,22,10], -5)) //expect [2,3,5,22,10,-5]
 console.log(moveElementToEnd([2,2,2,2,2,2], 2)) //expect [2,2,2,2,2,2]
 
+/* time complexity is O(n) because the pointers move inward in the nested while loop
+space complexity is O(1) */

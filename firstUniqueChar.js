@@ -38,7 +38,8 @@
 // once the object is built, check to see which characters only appear once
 //iterate over the string one more time and return the indice you find the first unique character at
 
-//O(n) time or O(n+m) most likely but lets see
+// O(n+m) time
+// O(1) space 
 
 function firstNonRepeatingCharacter(string) {
   //table to keep track of frequency
@@ -48,17 +49,14 @@ function firstNonRepeatingCharacter(string) {
     //either increase the value at that letter key by one or if it doesnt exist add it and assign 1 to the value
     freqTable[letter] = ++freqTable[letter] || 1;
   }
-
-  // console.log(freqTable)
-  // console.log('KEYS', Object.keys(freqTable))
-  // console.log('VALUES', Object.values(freqTable))
-
+  //loop over the string and if the current letter has a value of 1 in the freqTable then return it.
   for (let i = 0; i < string.length; i++) {
     let char = string[i];
     if (freqTable[char] === 1) {
       return i;
     }
   }
+  //otherwise return -1 to take care of edge cases and no unique letters
   return -1;
 }
 

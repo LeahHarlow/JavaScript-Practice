@@ -18,4 +18,6 @@ const same = (array1, array2) => {
 
 console.log(same([1,2,3],[1,4,9])) // expect true
 console.log(same([1,2,3,3],[1,4,9])) // expect false
+console.log(same([1,2,3,3],[1,4,9,9])) // expect true
+console.log(same([],[])) // expect true
 

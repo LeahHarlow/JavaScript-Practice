@@ -13,7 +13,6 @@ function validAnagram(str1, str2) {
   for (let char of str2) {
     str2Frequency[char] = ++str2Frequency[char] || 1;
   }
-  // console.log(str1Frequency, str2Frequency)
   for(let key in str1Frequency){
     if (str1Frequency[key] !== str2Frequency[key]) {
       return false;

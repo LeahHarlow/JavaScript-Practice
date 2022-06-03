@@ -1,24 +1,46 @@
 //write a function that accepts two string arguments, and determine if the second string is an anagram of the first.
 //you can assume that there will be only valid, lowercase inputs of two strings.
 
+// function validAnagram(str1, str2) {
+//   //if the strings are different lengths fail them immediatly
+//   if (str1.length !== str2.length) {
+//     return false;
+//   }
+//   //set up frequency counters and populate them
+//   letlookupFrequency = {};
+//   let str2Frequency = {};
+//   for (let letter of str1) {
+//    lookupFrequency[letter] = ++str1Frequency[letter] || 1;
+//   }
+//   for (let char of str2) {
+//     str2Frequency[char] = ++str2Frequency[char] || 1;
+//   }
+//   //iterate over the frequency counters and see if they are matching
+//   for(let key inlookupFrequency){
+//     if (str1Frequency[key] !== str2Frequency[key]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+
+//same  big O but better readability
 function validAnagram(str1, str2) {
   //if the strings are different lengths fail them immediatly
   if (str1.length !== str2.length) {
     return false;
   }
-  //set up frequency counters and populate them
-  let str1Frequency = {};
-  let str2Frequency = {};
+  //set up frequency counter and populate it
+  let lookupFrequency = {};
   for (let letter of str1) {
-    str1Frequency[letter] = ++str1Frequency[letter] || 1;
+   lookupFrequency[letter] = ++lookupFrequency[letter] || 1;
   }
-  for (let char of str2) {
-    str2Frequency[char] = ++str2Frequency[char] || 1;
-  }
-  //iterate over the frequency counters and see if they are matching
-  for(let key in str1Frequency){
-    if (str1Frequency[key] !== str2Frequency[key]) {
+  for(let char of str2){
+    if (!lookupFrequency[char]) {
       return false;
+    } else {
+      lookupFrequency[char] = --lookupFrequency[char];
     }
   }
   return true;

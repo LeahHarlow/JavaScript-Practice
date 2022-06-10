@@ -30,16 +30,17 @@ console.log('expected: 15 , got: ', maxSubArraySum([1, 10, -3, 8], 3));
 
 // write a function that accepts an array and a number and finds the largest possible sum from an subarray of consecutive numbers with the length of the number argument.
 
-const slide = (array, number) => {
-  let maxSum = 0;
+const slide = (array, num) => {
   let tempSum = 0;
-  for (let i = 0; i < number; i++) {
+  let maxSum = 0;
+  if (array.length < num) return null;
+  for (let i = 0; i < num; i++) {
     tempSum += array[i];
   }
   maxSum = tempSum;
-  for (let i = number; i < array.length; i++) {
-    tempSum = tempSum + array[i] - array[i - number];
-    maxSum = Math.max(tempSum, maxSum);
+  for (let i = num; i < array.length; i++) {
+    tempSum = tempSum - array[i - num] + array[i];
+    maxSum = Math.max(maxSum, tempSum);
   }
   return maxSum;
 };

@@ -16,31 +16,30 @@
 //as long as end does not equal the array length keep checking the sum against maxSum and return it at the end
 
 const maxSubArraySum = (array, num) => {
-  if(array.length < num){
+  if (array.length < num) {
     return null;
   }
   let tempSum = 0;
   let maxSum = 0;
-  for( let i = 0; i < num; i++){
+  for (let i = 0; i < num; i++) {
     tempSum += array[i];
   }
   maxSum = tempSum;
-  for(let j = num; j < array.length; j++){
-   tempSum = tempSum + array[j] - array[j - num];
-    if(tempSum > maxSum){
+  for (let j = num; j < array.length; j++) {
+    tempSum = tempSum + array[j] - array[j - num];
+    if (tempSum > maxSum) {
       maxSum = tempSum;
     }
   }
   return maxSum;
-}
-
-//   i
-//[1,2,3,4,5]
-//       j
+};
 
 //tests
-console.log('expected 15 and got:', maxSubArraySum([1,2,3,4,5,6], 3));
-console.log('expected 330 and got:', maxSubArraySum([100, 10, 300, 30], 2))
-console.log('expected 21  and got:', maxSubArraySum([-1, 20, 2, -30, 35], 3))
-console.log('expected null and got:', maxSubArraySum([], 5))
-console.log('expected null and got:', maxSubArraySum([1,2], 7))
+console.log('expected 15 and got:', maxSubArraySum([1, 2, 3, 4, 5, 6], 3));
+console.log('expected 330 and got:', maxSubArraySum([100, 10, 300, 30], 2));
+console.log('expected 21  and got:', maxSubArraySum([-1, 20, 2, -30, 35], 3));
+console.log('expected null and got:', maxSubArraySum([], 5));
+console.log('expected null and got:', maxSubArraySum([1, 2], 7));
+
+//time complexity O(n+m)
+//space complexity O(1)

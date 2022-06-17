@@ -10,16 +10,9 @@
 
 const minSubArrayLength = (array, num) => {
   if(!array.length) return null;
-  let windowLength = 0;
-  for(let i = 0; i < array.length; i++){
-    let window = array[i] + windowLength;
-    let windowSum = sumItUp(window);
-    if(windowSum >= num){
-      return window.length;
-    }
-    if(windowSum < num){
-      windowLength++
-    }
+  let windowLength = 1;
+  while(windowLength <= array.length){
+    
   }
 }
 

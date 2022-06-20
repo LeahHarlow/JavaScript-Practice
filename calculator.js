@@ -29,24 +29,29 @@
 
 const calculator = (s) => {
   if (!s.length) return 0;
-
   let stack = [];
   let result = 0;
   let posOrNeg = 1;
-
-  s.replace(' ', '');
-  // console.log(s);
+  let current = 0;
 
   for (let i = 0; i < s.length; i++) {
     let char = s[i];
     if (!isNaN(parseInt(char))) {
-      let current = parseInt(char);
+      current = parseInt(char);
       //console.log(current);
       while (i + 1 !== s.length && !isNaN(parseInt(s[i + 1]))) {
         current = current * 10 + parseInt(s[i + 1]);
         i++;
       }
-      result += current * posOrNeg
+      //result += current * posOrNeg//this wee line is the problem
+    }
+    else if(char === '*'){
+      posOrNeg = 1;
+      result *= current * posOrNeg
+    }
+    else if(char === '/'){
+      posOrNeg = 1;
+      result /= current * posOrNeg
     }
     else if(char === '-'){
       posOrNeg = -1;
@@ -68,7 +73,7 @@ const calculator = (s) => {
 };
 
 //tests:
-console.log('expected 2 and got:', calculator('1+ 1'));
+console.log('expected 2 and got:', calculator('1 + 1'));
 console.log('expected 4 and got:', calculator(' 2 / 2 +3'));
 console.log('expected 23 and got:', calculator('(1+(4+5+2)-3)+(6+8)'));
 console.log('expected 201 and got:', calculator(' 2 - 1 + 200 '));

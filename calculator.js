@@ -28,52 +28,58 @@
 //return result
 
 const calculator = (s) => {
+
+  const calculatorOperations = {
+    'x': (arg1, arg2) => arg1 * arg2,
+    '/': (arg1, arg2) => arg1 / arg2,
+    '+': (arg1, arg2) => arg1 + arg2,
+    '-': (arg1, arg2) => arg1 - arg2
+  };
+
   if (!s.length) return 0;
   let stack = [];
+  let num = 0;
   let result = 0;
   let posOrNeg = 1;
   let current = 0;
 
+  // still need to include 
   for (let i = 0; i < s.length; i++) {
     let char = s[i];
     if (!isNaN(parseInt(char))) {
       current = parseInt(char);
-      //console.log(current);
+      console.log(current);
       while (i + 1 !== s.length && !isNaN(parseInt(s[i + 1]))) {
         current = current * 10 + parseInt(s[i + 1]);
         i++;
       }
-      //result += current * posOrNeg//this wee line is the problem
-    }
-    else if(char === '*'){
+      num += current * posOrNeg;
+    } else if (char === '*') {
       posOrNeg = 1;
-      result *= current * posOrNeg
-    }
-    else if(char === '/'){
+      result *= num * posOrNeg;
+      num = 0;
+    } else if (char === '/') {
       posOrNeg = 1;
-      result /= current * posOrNeg
-    }
-    else if(char === '-'){
+      result /= num * posOrNeg;
+      num = 0;
+    } else if (char === '-') {
       posOrNeg = -1;
-    }
-    else if(char === '+'){
+    } else if (char === '+') {
       posOrNeg = 1;
-    }
-    else if(char === '('){
+    } else if (char === '(') {
       stack.push(result);
-      result = 0;
+      num = 0;
       stack.push(posOrNeg);
       posOrNeg = 1;
-    }
-    else if(char === ')'){
-      result = result * stack.pop() + stack.pop();
+    } else if (char === ')') {
+      result = num * stack.pop() + stack.pop();
     }
   }
   return result;
 };
 
 //tests:
-console.log('expected 2 and got:', calculator('1 + 1'));
-console.log('expected 4 and got:', calculator(' 2 / 2 +3'));
+console.log('expected 1 and got:', calculator('1*1'));
+console.log('expected 4 and got:', calculator('2/2+3'));
 console.log('expected 23 and got:', calculator('(1+(4+5+2)-3)+(6+8)'));
-console.log('expected 201 and got:', calculator(' 2 - 1 + 200 '));
+console.log('expected 201 and got:', calculator('2-1+200'));

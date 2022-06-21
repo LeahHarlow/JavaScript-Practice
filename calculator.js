@@ -35,7 +35,7 @@ const calculator = (s) => {
     '+': (arg1, arg2) => arg1 + arg2,
     '-': (arg1, arg2) => arg1 - arg2
   };
-  
+
   if (!s.length) return 0;
   let stack = [];
   let num = 0;
@@ -43,6 +43,7 @@ const calculator = (s) => {
   let posOrNeg = 1;
   let current = 0;
 
+  // still need to include 
   for (let i = 0; i < s.length; i++) {
     let char = s[i];
     if (!isNaN(parseInt(char))) {
@@ -52,7 +53,7 @@ const calculator = (s) => {
         current = current * 10 + parseInt(s[i + 1]);
         i++;
       }
-      result += current * posOrNeg;
+      num += current * posOrNeg;
     } else if (char === '*') {
       posOrNeg = 1;
       result *= num * posOrNeg;

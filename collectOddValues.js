@@ -48,3 +48,6 @@ console.log('extected [1,7,3,9] and got:',pureRecursion([1, 2, 7, 3, 4, 9]));
 
 //time complexity O(n)
 
+//note:
+//for recursion problems with arrays, use methods like slice, concat and spread operator to make copies
+// of them and not mutate them

@@ -1,6 +1,21 @@
 // write a function called someRecursive that accepts an array and a callback. someRecursive should return true if a single element in the array returns true when passed into the callback, otherwise return false.
 
-const someRecursive = (array, callback) => {};
+const someRecursive = (array, callback) => {
+  if (!array.length) {
+    console.log('false');
+    return false;
+  }
+  else {
+    if (callback(array[0]) === true) {
+      console.log('true')
+      return true;
+    } else {
+      array = array.slice(1);
+      console.log(array)
+      return someRecursive(array, callback); //not havign the return here was giving me undefined for false
+    }
+  }
+};
 
 // test callback: returns true if num is odd
 const isOdd = (num) => {

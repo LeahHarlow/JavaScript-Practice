@@ -2,17 +2,13 @@
 
 const someRecursive = (array, callback) => {
   if (!array.length) {
-    console.log('false');
     return false;
-  }
-  else {
+  } else {
     if (callback(array[0]) === true) {
-      console.log('true')
       return true;
     } else {
       array = array.slice(1);
-      console.log(array)
-      return someRecursive(array, callback); //not havign the return here was giving me undefined for false
+      return someRecursive(array, callback); //not having the return here was giving me undefined for false
     }
   }
 };

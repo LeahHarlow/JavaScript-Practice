@@ -19,23 +19,19 @@
 const divideAndConquer = (array, val) => {
   //first sort array
   array.sort((a, b) => a - b);
-  console.log(array)
-  //define the midpoint of the array
-  let mid = Math.floor(array.length / 2);
-  //if the array is empty return false;
-  if (!array.length) return false;
-  // if the midpoint is the value return true
-  if (mid === val) {
-    console.log(mid);
-    return true;
-  }
-  //if the value is greater than the midpoint call the function again but with the second half of the array
-  else if (val > mid) {
-    return divideAndConquer(array.slice(mid), val);
-  }
-  //if the value is less than the midpoint call the function again but with the first half of the array
-  else if (val < mid) {
-    return divideAndConquer(array.slice(0, mid), val);
+  //console.log(array)
+
+  let leftPt = 0;
+  let rightPt = array.length;
+
+  while (leftPt < rightPt) {
+    let midPt = Math.floor((leftPt + rightPt) / 2);
+    if (midPt === val) return midPt;
+    else if (val < midPt) {
+      rightPt = midPt;
+    } else if (val > midPt) {
+      leftPt = midPt;
+    }
   }
 };
 

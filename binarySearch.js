@@ -23,11 +23,8 @@ const divideAndConquer = (array, val) => {
   let midPt = Math.floor((leftPt + rightPt) / 2);
   //ahhhhh it was missing array[] and just had midpoint
   while (array[midPt] !== val && leftPt <= rightPt) {
-    if (val < array[midPt]) {
-      rightPt = midPt - 1;
-    } else {
-      leftPt = midPt + 1; //dont just have multiple ifs
-    }
+    if (val < array[midPt]) rightPt = midPt - 1;
+    leftPt = midPt + 1; //dont just have multiple ifs
     midPt = Math.floor((leftPt + rightPt) / 2);
   }
   return array[midPt] === val ? midPt : -1;

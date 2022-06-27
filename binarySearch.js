@@ -17,27 +17,22 @@
 // if you never find the value return -1
 
 const divideAndConquer = (array, val) => {
-  //first sort array
   array.sort((a, b) => a - b);
-  //console.log(array)
-
   let leftPt = 0;
-  let rightPt = array.length;
-
-  while (leftPt < rightPt) {
-    let midPt = Math.floor((leftPt + rightPt) / 2);
-    if (midPt === val) return midPt;
-    else if (val < midPt) {
-      rightPt = midPt;
-    } else if (val > midPt) {
-      leftPt = midPt;
+  let rightPt = array.length - 1; // -1 so were not out of bounds
+  let midPt = Math.floor((leftPt + rightPt) / 2);
+  //ahhhhh it was missing array[] and just had midpoint
+  while (array[midPt] !== val && leftPt <= rightPt) {
+    if (val < array[midPt]) {
+      rightPt = midPt - 1;
+    } else {
+      leftPt = midPt + 1; //dont just have multiple ifs
     }
+    midPt = Math.floor((leftPt + rightPt) / 2);
   }
+  return array[midPt] === val ? midPt : -1;
 };
 
-console.log('expected true and got:', divideAndConquer([1, 2, 3, 4, 5, 6], 3));
-console.log(
-  'expected true and got:',
-  divideAndConquer([1, 4, 7, 5, 3, 6, 6], 7)
-);
-console.log('expected false and got:', divideAndConquer([1, 2, 4, 5, 6], 3));
+console.log('expected 2 and got:', divideAndConquer([1, 2, 3, 4, 5, 6], 3));
+console.log('expected 6 and got:', divideAndConquer([1, 4, 7, 5, 3, 6, 6], 7));
+console.log('expected -1 and got:', divideAndConquer([1, 2, 4, 5, 6], 3));

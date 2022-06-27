@@ -14,7 +14,7 @@ const naiveSearch = (string, substring) => {
   for (let i = 0; i < string.length; i++) {
     for (let j = 0; j < substring.length; j++) {
       if (string[i + j] !== substring[j]) break;
-      if (j === substring.length - 1) count++;
+      if (j === substring.length - 1) count++; //very important check here
     }
   }
   return count;
@@ -26,3 +26,5 @@ const naiveSearch = (string, substring) => {
 console.log('expected 1 and got:', naiveSearch('lolsiepop', 'pop'));
 console.log('expected 0 and got:', naiveSearch('lolsieoop', 'pop'));
 console.log('expected 3 and got:', naiveSearch('lolsiepopopop', 'pop'));
+
+//nested for loop though gives us quadradic time. O(n )

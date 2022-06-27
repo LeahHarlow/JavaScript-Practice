@@ -33,3 +33,5 @@ const divideAndConquer = (array, val) => {
 console.log('expected 2 and got:', divideAndConquer([1, 2, 3, 4, 5, 6], 3));
 console.log('expected 6 and got:', divideAndConquer([1, 4, 7, 5, 3, 6, 6], 7));
 console.log('expected -1 and got:', divideAndConquer([1, 2, 4, 5, 6], 3));
+
+//for binary search, worse and average case are O(log n) best case is O(1);

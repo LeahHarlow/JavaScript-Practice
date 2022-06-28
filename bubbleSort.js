@@ -43,3 +43,9 @@ console.log(
   'expected [1,2,4,5] and got:',
   betterBubbleSort([4, 2, 1, 5, 6, 12, 2, 13])
 );
+
+//note:
+//selection sort is basically bubble sort in reverse but with less swaps.
+
+//bubble sort works really well if the data is almost sorted. Selection sort is useful if you want to compute less swaps. insertion sort works really well if the data is nearly sorted. All have O(n^2) though. space complexity is all O(1). These work pretty well with like 20 elements or less, but they really dont scale well.
+

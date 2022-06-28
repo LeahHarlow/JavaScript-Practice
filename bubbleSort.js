@@ -1,10 +1,12 @@
-const swap = (val1, val2) => {
+const classicSwap = (val1, val2) => {
   //condtional to show order we want
   // ie if(array[val1] < array[val2])
   let temp = val1;
   val1 = val2;
   val2 = temp;
 };
+
+const ES6Swap = (array, idx1, idx2) => ([array[idx1], array[idx2]] = [array[idx2], array[idx1]]);
 
 const naiveBubbleSort = (array) => {
   for (let i = 0; i < array.length; i++) {
@@ -32,9 +34,12 @@ const betterBubbleSort = (array) => {
         noSwap = false;
       }
     }
-    if(noSwap) break;
+    if (noSwap) break;
   }
   return array;
 };
 
-console.log('expected [1,2,4,5] and got:', betterBubbleSort([4, 2, 1, 5, 6, 12, 2, 13]));
+console.log(
+  'expected [1,2,4,5] and got:',
+  betterBubbleSort([4, 2, 1, 5, 6, 12, 2, 13])
+);

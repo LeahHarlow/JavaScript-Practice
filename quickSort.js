@@ -19,4 +19,15 @@ const pivot = (array, start = 0, end = array.length) => {
   return swapIdx;
 };
 
-const quickSort = () => {};
+const quickSort = (array, left = 0, right = array.length - 1) => {
+  if (left < right) {
+    let pivotIndex = pivot(array, left, right);
+    //recursivley work through each half
+    quickSort(array, left, pivotIndex - 1);
+    quickSort(array, pivotIndex + 1, right);
+  }
+  return array;
+};
+
+
+console.log('expected [1,2,3,4,5] and got:', quickSort([3,4,5,1,2]));

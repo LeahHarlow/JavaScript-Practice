@@ -31,3 +31,6 @@ const quickSort = (array, left = 0, right = array.length - 1) => {
 
 
 console.log('expected [1,2,3,4,5] and got:', quickSort([3,4,5,1,2]));
+
+//time complexity O(n log n);
+//space complexity O(log n);

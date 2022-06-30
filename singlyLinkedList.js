@@ -28,9 +28,35 @@ class singlyLinkedList {
     this.length += 1;
     return this;
   }
+  pop(){
+    if(!this.length) return undefined;
+    let current = this.head;
+    let newTail = current;
+    while(current.next){
+      newTail = current;
+      current = current.next;
+    }
+    this.tail = newTail;
+    this.tail.next = null;
+    this.length--;
+    if(!this.length){
+      this.head = null;
+      this.tail = null;
+    }
+    return current;
+  }
+  traverse(){
+    let current = this.head;
+    while (current){
+      console.log(current.val);
+      current = current.next;
+    }
+  }
 }
 
 let list = new singlyLinkedList();
 list.push('HI');
 list.push('FRIEND');
-console.log(list);
+//console.log(list);
+
+list.traverse();

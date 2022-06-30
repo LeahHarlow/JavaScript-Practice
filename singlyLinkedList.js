@@ -75,7 +75,7 @@ class singlyLinkedList {
     this.length++;
     return this;
   }
-  get(idx){
+  get(idx){ // O(n)
     if(idx < 0 || idx > this.length) return null;
     let count = 0;
     let current = this.head
@@ -93,7 +93,7 @@ class singlyLinkedList {
     }
     return false;
   }
-  insert(idx, val){
+  insert(idx, val){ //O(1)
     if(idx < 0 || idx > this.length) return false;
     if(idx === this.length) return !!this.push(val);
     if(idx === 0) return !!this.unshift(val);
@@ -106,7 +106,7 @@ class singlyLinkedList {
     this.length++;
     return true;
   }
-  remove(idx){
+  remove(idx){ // O(1) from beginning or O(n) from somewhere else
     if(idx < 0 || idx > this.length) return undefined;
     if(idx === this.length -1) return this.pop(); //-1 here because were checking to see if its the last item
     if(idx === 0) return this.shift;
@@ -116,6 +116,19 @@ class singlyLinkedList {
     prev.next = removed.next;
     this.length--;
     return removed;
+  }
+  reverse(){ //relatively common interview question
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let next = null;
+    let prev = null;
+    for(let i = 0; i < this.length; i++){
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
   }
 }
 
@@ -130,3 +143,5 @@ list.shift();
 console.log(list);
 
 console.log(list.get(1));
+
+

@@ -28,29 +28,40 @@ class singlyLinkedList {
     this.length += 1;
     return this;
   }
-  pop(){
-    if(!this.length) return undefined;
+  pop() {
+    if (!this.length) return undefined;
     let current = this.head;
     let newTail = current;
-    while(current.next){
+    while (current.next) {
       newTail = current;
       current = current.next;
     }
     this.tail = newTail;
     this.tail.next = null;
     this.length--;
-    if(!this.length){
+    if (!this.length) {
       this.head = null;
       this.tail = null;
     }
     return current;
   }
-  traverse(){
+  traverse() {
     let current = this.head;
-    while (current){
+    while (current) {
       console.log(current.val);
       current = current.next;
     }
+  }
+  shift() {
+    if (!this.length) return undefined;
+    let oldHead = this.head;
+    this.head = oldHead.next;
+    this.length--;
+    if (!this.length) {
+      this.head = null;
+      this.tail = null;
+    }
+    return oldHead;
   }
 }
 

@@ -85,6 +85,14 @@ class singlyLinkedList {
     }
     return current;
   }
+  set(idx, val){
+    let nodeToUpdate = this.get(idx);
+    if(nodeToUpdate){
+      nodeToUpdate.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 let list = new singlyLinkedList();

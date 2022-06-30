@@ -97,6 +97,7 @@ class singlyLinkedList {
     if(idx < 0 || idx > this.length) return false;
     if(idx === this.length) return !!this.push(val);
     if(idx === 0) return !!this.unshift(val);
+
     let newNode = new Node(val);
     let prev = this.get(idx -1);
     let temp = prev.next;
@@ -104,6 +105,17 @@ class singlyLinkedList {
     newNode.next = temp;
     this.length++;
     return true;
+  }
+  remove(idx){
+    if(idx < 0 || idx > this.length) return undefined;
+    if(idx === this.length -1) return this.pop(); //-1 here because were checking to see if its the last item
+    if(idx === 0) return this.shift;
+
+    let prev = this.get(idx -1);
+    let removed = this.get(idx);
+    prev.next = removed.next;
+    this.length--;
+    return removed;
   }
 }
 

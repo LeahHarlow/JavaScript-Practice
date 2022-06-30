@@ -28,10 +28,41 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+  pop(){
+    if(!this.head) return undefined;
+    let removedTail = this.tail;
+    let previousNode = this.tail.previous;
+    if(this.length === 1){
+      this.head = null;
+      this.length = null;
+    }
+    this.tail = previousNode;
+    this.tail.next = null;
+    removedTail.previous = null;
+    this.length--;
+    return removedTail;
+  }
+  shift(){
+    if(!this.length) return undefined;
+    let oldHead = this.head;
+    if(this.length === 1){
+      this.head = null;
+      this.tail = null;
+    }
+    this.head = oldHead.next;
+    this.head.previous = null;
+    oldHead.next = null;
+    this.length--;
+    return oldHead
+  }
 }
 
 let list = new DoublyLinkedList;
 list.push(3);
 list.push(7);
 list.push(13);
+list.push(9)
 console.log(list);
+
+list.shift();
+console.log(list)

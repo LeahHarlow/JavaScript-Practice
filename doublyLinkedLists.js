@@ -88,21 +88,21 @@ class DoublyLinkedList {
       return current;
     }
   }
-  set(idx, val){
+  set(idx, val) {
     let nodeToUpdate = this.get(idx);
-    if(nodeToUpdate){
+    if (nodeToUpdate) {
       nodeToUpdate.val = val;
       return true;
     }
     return false;
   }
-  insert(idx, val){
+  insert(idx, val) {
     if (idx < 0 || idx >= this.length) return false;
-    if(idx === 0) return !!this.unshift(val);
-    if(idx === this.length) return !!this.push(val);
+    if (idx === 0) return !!this.unshift(val);
+    if (idx === this.length) return !!this.push(val);
 
-    let prev = this.get(idx -1);
-    let next = this.get(idx+1);
+    let prev = this.get(idx - 1);
+    let next = this.get(idx + 1);
     let newNode = new Node(val);
     newNode.next = prev.next;
     prev.next = newNode;
@@ -111,15 +111,30 @@ class DoublyLinkedList {
     this.length++;
     return true;
   }
-  print(){
+  print() {
     let array = [];
     let current = this.head;
     array.push(current.val);
-    while(current.next){
+    while (current.next) {
       current = current.next;
       array.push(current.val);
     }
-    console.log(array)
+    console.log(array);
+  }
+  remove(idx) {
+    if (idx < 0 || idx > this.length) return undefined;
+    if (idx === this.length - 1) return this.pop(); //-1 here because were checking to see if its the last item
+    if (idx === 0) return this.shift;
+
+    let prev = this.get(idx - 1);
+    let removed = this.get(idx);
+    let next = removed.next;
+    prev.next = next;
+    next.prev = prev;
+    removed.previous = null;
+    removed.next = null;
+    this.length--;
+    return removed;
   }
 }
 
@@ -138,6 +153,9 @@ list.push(9);
 // list.set(1,17);
 // console.log(list);
 
-list.print()
-list.insert(1, 5)
-list.print()
+list.print();
+list.insert(1, 5);
+list.print();
+
+list.remove(2);
+list.print();

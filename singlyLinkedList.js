@@ -133,6 +133,7 @@ class singlyLinkedList {
       prev = node;
       node = next;
     }
+    return this;
   }
 }
 

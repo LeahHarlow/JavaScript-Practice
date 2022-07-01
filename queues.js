@@ -47,3 +47,5 @@ newQueue.enqueue(7);
 console.log(newQueue)
 newQueue.dequeue();
 console.log(newQueue)
+
+//insertion and removal are constant time and searching and accessing are O(n);

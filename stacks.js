@@ -36,7 +36,7 @@ class Stack {
   pop() {
     if (!this.size) return null;
     let oldfirst = this.first;
-    if(this.first === this.last){
+    if (this.first === this.last) {
       this.last = null;
     }
     this.first = this.first.next;

@@ -33,6 +33,16 @@ class Stack {
     this.size++;
     return this;
   }
+  pop() {
+    if (!this.size) return null;
+    let oldfirst = this.first;
+    if(this.first === this.last){
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return oldfirst;
+  }
 }
 
 let stackityStack = new Stack();
@@ -41,3 +51,5 @@ console.log(stackityStack);
 stackityStack.push('Good');
 stackityStack.push('Morning');
 console.log('after push', stackityStack);
+stackityStack.pop();
+console.log('after pop', stackityStack);

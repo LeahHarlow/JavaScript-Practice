@@ -10,7 +10,7 @@ class Node {
   }
 }
 
-class singlyLinkedList {
+class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -137,7 +137,7 @@ class singlyLinkedList {
   }
 }
 
-let list = new singlyLinkedList();
+let list = new SinglyLinkedList();
 list.push('HI');
 list.push('FRIEND');
 

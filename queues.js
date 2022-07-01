@@ -10,7 +10,7 @@ class Node {
   }
 }
 
-class Stack {
+class Queue {
   constructor() {
     this.first = null;
     this.last = null;
@@ -38,3 +38,12 @@ class Stack {
     return oldFirst;
   }
 }
+
+let newQueue = new Queue();
+
+newQueue.enqueue(1);
+newQueue.enqueue(3);
+newQueue.enqueue(7);
+console.log(newQueue)
+newQueue.dequeue();
+console.log(newQueue)

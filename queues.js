@@ -16,7 +16,7 @@ class Queue {
     this.last = null;
     this.size = 0;
   }
-  enqueue(val) {
+  enqueue(val) {//basically unshift
     let newNode = new Node(val);
     if (!this.first) {
       this.first = newNode;
@@ -27,7 +27,7 @@ class Queue {
     }
     return ++this.size;
   }
-  dequeue() {
+  dequeue() {//basically shift
     if (!this.first) return null;
     let oldFirst = this.first;
     if (this.first === this.last) {

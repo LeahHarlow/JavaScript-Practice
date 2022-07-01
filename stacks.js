@@ -21,7 +21,7 @@ class Stack {
     this.last = null;
     this.size = 0;
   }
-  push(val) {
+  push(val) { //basically unshift
     let newNode = new Node(val);
     if (!this.size) {
       this.first = newNode;
@@ -33,7 +33,7 @@ class Stack {
     this.size++;
     return this;
   }
-  pop() {
+  pop() {//basically shift
     if (!this.size) return null;
     let oldfirst = this.first;
     if (this.first === this.last) {

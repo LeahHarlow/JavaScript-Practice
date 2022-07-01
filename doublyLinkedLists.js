@@ -67,7 +67,7 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
-  get(idx) {
+  get(idx) {//O(n) technically O(n/2) but thats still O(n) but worth noting
     if (idx < 0 || idx >= this.length) return null;
     if (idx <= Math.floor(this.length / 2)) {
       let count = 0;
@@ -88,7 +88,7 @@ class DoublyLinkedList {
       return current;
     }
   }
-  set(idx, val) {
+  set(idx, val) {//O(n)
     let nodeToUpdate = this.get(idx);
     if (nodeToUpdate) {
       nodeToUpdate.val = val;
@@ -96,7 +96,7 @@ class DoublyLinkedList {
     }
     return false;
   }
-  insert(idx, val) {
+  insert(idx, val) { //O(1)
     if (idx < 0 || idx >= this.length) return false;
     if (idx === 0) return !!this.unshift(val);
     if (idx === this.length) return !!this.push(val);
@@ -121,7 +121,7 @@ class DoublyLinkedList {
     }
     console.log(array);
   }
-  remove(idx) {
+  remove(idx) { //O(1)
     if (idx < 0 || idx > this.length) return undefined;
     if (idx === this.length - 1) return this.pop(); //-1 here because were checking to see if its the last item
     if (idx === 0) return this.shift;

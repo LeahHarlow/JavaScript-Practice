@@ -88,6 +88,14 @@ class DoublyLinkedList {
       return current;
     }
   }
+  set(idx, val){
+    let nodeToUpdate = this.get(idx);
+    if(nodeToUpdate){
+      nodeToUpdate.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 let list = new DoublyLinkedList();
@@ -100,4 +108,7 @@ console.log(list);
 list.shift();
 console.log(list);
 list.unshift(1);
+console.log(list);
+
+list.set(1,17);
 console.log(list);

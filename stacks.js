@@ -53,3 +53,5 @@ stackityStack.push('Morning');
 console.log('after push', stackityStack);
 stackityStack.pop();
 console.log('after pop', stackityStack);
+
+//insertion and removal are both constant time here O(1); searching and accessing are not a priority here - which would be O(n); So that is actualy a situation where an array woud be better.

@@ -6,30 +6,15 @@
 
 //unoptimized, have one loop over and other loop over and
 
-const twoSum = (array, target) => {
-  let indexObj = {}
-    for(let i = 0; i < array.length; i++){
-      indexObj[i] = array[i];
-    }
-    console.log(indexObj);
-  let sortedArr = array.sort((a,b) => a -b);
-    let leftPt = 0;
-    let rightPt = sortedArr.length-1;
-    while (leftPt < rightPt){
-        let sum = sortedArr[leftPt] + sortedArr[rightPt];
-        if(sum === target) {
-            let num1 = sortedArr[leftPt];
-            let num2 = sortedArr[rightPt]
-            return [indexObj[leftPt], indexObj[rightPt]]
-        }
-        if(sum < target){
-            ++leftPt;
-        }
-        if(sum > target){
-            --rightPt;
-        }
-    }
-    return []
+const twoSum = (nums, target) => {
+  var map = new Map();
+
+  for(var i = 0; i<nums.length; i++) {
+      var num = nums[i];
+      if(map.get(num) === undefined) map.set(target-num, i);
+      else return [map.get(num), i];
+  }
+  return []
 };
 
 console.log('Expected [0,3] and got:', twoSum([1, 2, 7, 4], 5));

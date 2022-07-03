@@ -9,8 +9,9 @@
 const twoSum = (array, target) => {
   let indexObj = {}
     for(let i = 0; i < array.length; i++){
-        indexObj[array[i]] = i;
+      indexObj[i] = array[i];
     }
+    console.log(indexObj);
   let sortedArr = array.sort((a,b) => a -b);
     let leftPt = 0;
     let rightPt = sortedArr.length-1;
@@ -19,7 +20,7 @@ const twoSum = (array, target) => {
         if(sum === target) {
             let num1 = sortedArr[leftPt];
             let num2 = sortedArr[rightPt]
-            return [indexObj[num1], indexObj[num2]]
+            return [indexObj[leftPt], indexObj[rightPt]]
         }
         if(sum < target){
             ++leftPt;
@@ -32,5 +33,6 @@ const twoSum = (array, target) => {
 };
 
 console.log('Expected [0,3] and got:', twoSum([1, 2, 7, 4], 5));
-// console.log('Expected -1 and got:', twoSum([1, 2, 7, -3], 1));
-// console.log('Expected [0,5] and got:', twoSum([1, 2, 7, 6, 8, 4], 5));
+console.log('Expected [] and got:', twoSum([1, 2, 7, -3], 1));
+console.log('Expected [0,5] and got:', twoSum([1, 2, 7, 6, 8, 4], 5));
+console.log('Expected [0,1] and got:', twoSum([3,3], 6));

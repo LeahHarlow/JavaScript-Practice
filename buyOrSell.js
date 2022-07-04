@@ -28,20 +28,27 @@
 
 const buySell = (prices) => {
   let maxProfit = 0;
+  //start both max and min at the first price in the array
   let minCost = prices[0];
   let maxCost = prices[0];
+  //iterate over all of the prices
   for (let i = 1; i < prices.length; i++) {
     let dailyPrice = prices[i];
+    //if the price is less than the minimum reset it
     if (dailyPrice < minCost) {
       minCost = dailyPrice;
-      maxCost = dailyPrice; //?
+      //also set max cost to minimum cost to the minimum so that we dont keep tracking the max that came before the minimum
+      maxCost = dailyPrice; //this was the key trick to a single loop
     } else if (dailyPrice > maxCost) {
+      //set max cost if the daily price is larger than it
       maxCost = dailyPrice;
     }
+    //if the max cost is greater than the min cost do the math and set that to the profit
     if (maxCost > minCost) {
       maxProfit = maxCost - minCost;
     }
   }
+  //at the end weve checked all the values where the max was greater than the minimum so return that
   return maxProfit;
 };
 
@@ -62,3 +69,7 @@ console.log('expected 0 and got:', buySell([7, 7, 7, 7]));
 //if left is less than right calculate the difference and set it to max sum if its greater than the current max sum
 //then increase leftPt
 //outside of the while loop return max sum
+
+//so that broke down when there was a larger number at the beginning, maybe it could have been remeedied but it was simpler to only have one iterating element to keep the order correct.
+
+//big O = O(n) / O(1);

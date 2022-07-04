@@ -18,6 +18,7 @@
 
 const divideAndConquer = (array, val) => {
   array.sort((a, b) => a - b);
+  if(array.length === 1 || array[0] === val) return 0;
   let leftPt = 0;
   let rightPt = array.length - 1; // -1 so were not out of bounds
   let midPt = Math.floor((leftPt + rightPt) / 2);
@@ -30,7 +31,7 @@ const divideAndConquer = (array, val) => {
   return array[midPt] === val ? midPt : -1;
 };
 
-console.log('expected 2 and got:', divideAndConquer([1, 2, 3, 4, 5, 6], 3));
+console.log('expected 0 and got:', divideAndConquer([1, 2, 3, 4, 5, 6], 1));
 console.log('expected 6 and got:', divideAndConquer([1, 4, 7, 5, 3, 6, 6], 7));
 console.log('expected -1 and got:', divideAndConquer([1, 2, 4, 5, 6], 3));
 

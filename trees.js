@@ -85,6 +85,17 @@ class BinarySearchTree {
       if(node.right) traverse(node.right);
     }
     traverse(this.root)
+    // console.log(visited)
+    return visited;
+  }
+  DFSPostOrder(){
+    let visited = [];
+    function traverse(node){
+      if(node.left) traverse(node.left);
+      if(node.right) traverse(node.right);
+      visited.push(node.val);
+    }
+    traverse(this.root)
     console.log(visited)
     return visited;
   }
@@ -107,3 +118,4 @@ tree.insert(14);
 //big O searching O(log n) *log base 2 of n technically*
 tree.BFS();
 tree.DFSPreOrder();
+tree.DFSPostOrder();

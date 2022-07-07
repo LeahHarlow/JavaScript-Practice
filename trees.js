@@ -131,3 +131,7 @@ tree.BFS();
 tree.DFSPreOrder();
 tree.DFSPostOrder();
 tree.DFSInOrder();
+
+//breadth first can be more taxing on space complexityif it is a lot wider than deep, in which case depth first would be more efficient.
+//DFS gives you all the node values in ascending order
+//PreORder is useful when youre wanting to copy and reconstruct a tree since it starts with the root then left then right. 

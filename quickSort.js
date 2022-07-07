@@ -4,7 +4,7 @@ const pivot = (array, start = 0, end = array.length) => {
   const swap = (array, idx1, idx2) => {
     [array[idx1], array[idx2]] = [array[idx2], array[idx1]];
   };
-  //here were assuming th epivot is always the first element
+  //here were assuming the pivot is always the first element
   let pivot = array[start];
   let swapIdx = [start];
 

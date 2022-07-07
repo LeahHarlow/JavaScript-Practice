@@ -51,35 +51,43 @@ const maxSubArraySum = (array, num) => {
 
 // A subarray is a contiguous part of an array.
 
-
 //pseudocode
 //start pointer at front
 // add one and check sum until the end comparing sum to the max each time
 // increase start by one and repeat until start = end of array
 //return max sum
 
-let add = (num1, num2) => {
-  return num1 + num2;
-}
+var maxSubArray = function (nums) {
+ if(!nums.length) return 0;
+ if(nums.length === 1) return nums[0];
 
-var maxSubArray = function(nums) {
-  let max = 0;
-  let start = 0;
-  let end = 0;
-  let tempSum = 0;
-  if(!nums.length) return 0;
-  if(nums.length === 1) return nums[0];
-  while(start < nums.length && end < nums.length){
-   let count = 0;
-    tempSum += nums[start] + nums[start+count];
-    console.log('TEMPSUM',tempSum)
-    max = Math.max(tempSum, max);
-    start++;
-    console.log(start)
-  }
-  return max;
+ let max = nums[0];
+ let currentSum = nums[0];
+
+ for(let i = 1; i < nums.length; i++){
+  //think first time : nums[1] or nums[0] + nums[1]
+  //second time : nums[2] or whichever was greater + nums[3]
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+    max = Math.max(max, currentSum);
+ }
+ return max;
 };
 
 console.log('expected 0 and got:', maxSubArray([]));
 console.log('expected 3 and got:', maxSubArray([3]));
 console.log('expected 15 and got:', maxSubArray([4, 5, 6]));
+console.log('expected 15 and got:', maxSubArray([-1, -4, 4, 5, 6, -3]));
+console.log('expected 9 and got:', maxSubArray([-1, -4, 4,-1, 6, -3]));
+
+//alternative:
+// var maxSubArray = function(nums) {
+//   if(nums.length == 0) return 0;
+//     let result = -Infinity;
+//     let sum = 0;
+//     for(let i = 0; i < nums.length; i++) {
+//         sum += nums[i];
+//         result = sum>result ? sum : result
+//         sum = sum < 0 ? 0 : sum;
+//     }
+//     return result;
+// };

@@ -27,4 +27,4 @@ console.log('expected 1 and got:', naiveSearch('lolsiepop', 'pop'));
 console.log('expected 0 and got:', naiveSearch('lolsieoop', 'pop'));
 console.log('expected 3 and got:', naiveSearch('lolsiepopopop', 'pop'));
 
-//nested for loop though gives us quadradic time. O(n )
+//nested for loop though gives us quadradic time. O(n ^2)

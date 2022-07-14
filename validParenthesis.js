@@ -43,6 +43,28 @@ const validParens = (s) => {
   return !openStack.length
 };
 
+var isValid = function(s) {
+  let validPairs = {
+      '}':'{',
+      ')':'(',
+      ']':'[',
+  }
+  let openBrackets = [];
+  for(let i = 0; i< s.length; i++){
+      let char = s[i];
+      if(char === '{' || char === '[' || char === '('){
+          openBrackets.push(char);
+      }
+      if(char === '}' || char === ']' || char === ')'){
+          if(validPairs[char] !== openBrackets.pop()){
+              return false;
+          }
+      }
+  }
+  if(openBrackets.length === 0) return true;
+  return false
+};
+
 console.log('Expected true and got:', validParens('{}'));
 console.log('Expected true and got:', validParens('{}[]()'));
 console.log('Expected false and got:', validParens('{]'));

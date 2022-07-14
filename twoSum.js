@@ -22,6 +22,16 @@ const twoSum = function (nums, target) {
   return [];
 };
 
+var twoSumPt2 = function(nums, target) {
+  for(let i = 0; i < nums.length; i++){
+      let needed = target - nums[i];
+      if(nums.includes(needed) && nums.indexOf(needed) !== i){
+          return [i, nums.indexOf(needed)]
+      }
+  }
+  return -1
+};
+
 console.log('Expected [0,3] and got:', twoSum([1, 2, 7, 4], 5));
 console.log('Expected [] and got:', twoSum([1, 2, 7, -3], 1));
 console.log('Expected [0,5] and got:', twoSum([1, 2, 7, 6, 8, 4], 5));

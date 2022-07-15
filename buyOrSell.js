@@ -73,3 +73,22 @@ console.log('expected 0 and got:', buySell([7, 7, 7, 7]));
 //so that broke down when there was a larger number at the beginning, maybe it could have been remeedied but it was simpler to only have one iterating element to keep the order correct.
 
 //big O = O(n) / O(1);
+
+
+var maxProfit = function(prices) {
+  let maxProfit = 0;
+  let buy = 0;
+  let sell = 0;
+  for(let i = 1; i < prices.length; i++){
+      let dailyPrice = prices[i];
+      if(dailyPrice < prices[buy]) {
+          buy = i;
+          sell = buy;
+      }
+      if(dailyPrice > prices[buy]){
+          let tempSum = dailyPrice - prices[buy]
+          maxProfit = Math.max(maxProfit, tempSum);
+      }
+  }
+  return maxProfit;
+};

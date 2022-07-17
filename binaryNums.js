@@ -19,6 +19,16 @@ const guestJoe = {
   claimedPerks : 11 // 0b1011 or binary number 11 bc 1+2+8=11
 }
 
+const guestPenny = {
+  name: "Penny",
+  claimedPerks : 4
+}
+
+const guestLilly = {
+  name: "Lilly",
+  claimedPerks : 12
+}
+
 //The & symbol here will compare the two binary codes and return the common values.
 //1011 = Joe
 //0001 = yoga
@@ -41,3 +51,5 @@ const printClaimedPerks = (guest) => {
 }
 
 printClaimedPerks(guestJoe);
+printClaimedPerks(guestPenny);
+printClaimedPerks(guestLilly);

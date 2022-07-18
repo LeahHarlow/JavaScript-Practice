@@ -53,6 +53,22 @@ console.log("expected true and got: ", validAnagram("aabbaa", "ababaa"))
 console.log("expected false and got: ", validAnagram("zuma", "uma"))
 console.log("expected false and got: ", validAnagram("money", "monie"))
 
+var isAnagram = function(s, t) {
+  if(s.length !== t.length) return false;
+  let sFrequency = {}
+  for(let i = 0; i < s.length; i++){
+      let char = s[i];
+      sFrequency[char] = sFrequency[char] ? ++sFrequency[char] : 1;
+  }
+ console.log(sFrequency)
+  for(let j = 0; j <t.length; j++){
+      let char2 = t[j];
+      if(!sFrequency[char2]) return false;
+      sFrequency[char2] = --sFrequency[char2]
+  }
+  return true
+};
+
 
 //time complexity => O(n)
 //space complexity => O(1)

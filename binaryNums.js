@@ -85,9 +85,15 @@ const family = [
 
 const totalFamilyClaimedPerks = family.reduce((totalPerksValue, familyMember)=> {
   const claimedPerks = familyMember.claimedPerks;
+
+  //this will give us four empty 0 spaces to fill with the bitwise or operator
   const withSomeRoom = totalPerksValue << 4
-  
+//basically creates one big number that fills in everyones bits in one big long number.
+  return withSomeRoom | claimedPerks;
 })
+
+//this really long number can then be used witht he right Shift operator to look at each bit separately as groups of 4. 
+console.log(totalFamilyClaimedPerks);
 
 //The & symbol here will compare the two binary codes and return the common values.
 //1011 = Joe

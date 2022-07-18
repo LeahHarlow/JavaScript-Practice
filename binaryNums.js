@@ -9,6 +9,12 @@
 
 //binary numbers ccan be used to simplify objects too. For example If you have a hotel and you want to keep track of the perks guests have used you could make a massive oject(that possibly is more human readable) or use a binary mask. ie
 
+// The bitwise AND operator (&) returns a 1 in each bit position for which the corresponding bits of both operands are 1s.
+
+// The left shift operator (<<) shifts the first operand the specified number of bits, modulo 32, to the left. Excess bits shifted off to the left are discarded. Zero bits are shifted in from the right.
+
+// The right shift operator (>>) returns the signed number represented by the result of performing a sign-extending shift of the binary representation of the first operand (evaluated as a two's complement bit string) to the right by the number of bits, modulo 32, specified in the second operand. Excess bits shifted off to the right are discarded, and copies of the leftmost bit are shifted in from the left.
+
 const HAS_DONE_YOGA = 1 //OR 0b001 in js binary syntax
 const HAS_DONE_DINNER = 0b0010 //OR 2
 const HAS_DONE_KAYAK = 0b0100 // or 4

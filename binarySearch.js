@@ -36,3 +36,24 @@ console.log('expected 6 and got:', divideAndConquer([1, 4, 7, 5, 3, 6, 6], 7));
 console.log('expected -1 and got:', divideAndConquer([1, 2, 4, 5, 6], 3));
 
 //for binary search, worse and average case are O(log n) best case is O(1);
+
+var search = function(nums, target) {
+
+  let left = 0;
+  let right = nums.length-1;
+  let midpoint = Math.floor((left+ right)/2);
+
+  if(target > nums[right] || target < nums[left])return -1;
+
+  while(nums[midpoint] !== target && left <= right){
+      if ( target < nums[midpoint]){
+          right = midpoint-1;
+          midpoint = Math.floor((left+ right)/2);
+      }
+      if ( target >nums[midpoint]){
+          left = midpoint+1;
+          midpoint = Math.floor((left+ right)/2);;
+      }
+  }
+  return nums[midpoint] === target ? midpoint : -1;
+};

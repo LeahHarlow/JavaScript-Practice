@@ -64,7 +64,7 @@ var maxSubArray = function (nums) {
  if(nums.length === 1) return nums[0];
 //max keeps track of the greatest sum that we will ultimately return;
  let maxTotal = nums[0];
- //keeps track of the larger between greatest between the current sum and the addition of the new current number to it. 
+ //keeps track of the larger between greatest between the current sum and the addition of the new current number to it.
  let currentSum = nums[0];
 
  for(let i = 1; i < nums.length; i++){
@@ -95,3 +95,17 @@ console.log('expected 9 and got:', maxSubArray([-1, -4, 4,-1, 6, -3]));
 //     }
 //     return result;
 // };
+
+var maxSubArray = function(nums) {
+  if(!nums.length) return 0;
+    if(nums.length === 1) return nums[0];
+    let maxTotal = nums[0];
+    let currentTotal = maxTotal;
+
+    for(let i = 1; i < nums.length; i++){
+        let currentNumber = nums[i];
+        currentTotal = Math.max(currentNumber, currentTotal+currentNumber);
+        maxTotal = Math.max(currentTotal, maxTotal)
+    }
+    return maxTotal;
+};

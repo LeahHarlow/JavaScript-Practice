@@ -58,19 +58,23 @@ const maxSubArraySum = (array, num) => {
 //return max sum
 
 var maxSubArray = function (nums) {
+  //if empty array then return 0;
  if(!nums.length) return 0;
+ //if theres ony one element in the array then return that number;
  if(nums.length === 1) return nums[0];
-
- let max = nums[0];
+//max keeps track of the greatest sum that we will ultimately return;
+ let maxTotal = nums[0];
+ //keeps track of the larger between greatest between the current sum and the addition of the new current number to it. 
  let currentSum = nums[0];
 
  for(let i = 1; i < nums.length; i++){
   //think first time : nums[1] or nums[0] + nums[1]
   //second time : nums[2] or whichever was greater + nums[3]
-    currentSum = Math.max(nums[i], currentSum + nums[i]);
-    max = Math.max(max, currentSum);
+  let currentNum = nums[i];
+    currentSum = Math.max(currentNum, currentSum + currentNum);
+    maxTotal = Math.max(maxTotal, currentSum);
  }
- return max;
+ return maxTotal;
 };
 
 console.log('expected 0 and got:', maxSubArray([]));

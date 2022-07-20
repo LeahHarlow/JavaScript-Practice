@@ -69,6 +69,6 @@ var isAnagram = function(s, t) {
   return true
 };
 
-
+module.exports = validAnagram;
 //time complexity => O(n)
 //space complexity => O(1)

@@ -1,11 +1,11 @@
 //coz we can streamline this
 
 //vars
-let recipient = 'Quora';
+let recipient = 'Dropbox';
 let title = '';
-let company = 'Quora';
+let company = 'Dropbox';
 let companyAddress = '';
-let position = 'Product Engineer';
+let position = 'intern';
 let reason = '';
 
 let headerBit = `${recipient} \n ${title} \n ${company} \n ${companyAddress}\n ${position}`;

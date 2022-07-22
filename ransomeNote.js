@@ -12,6 +12,7 @@ var canConstruct = function (ransomNote, magazine) {
       ? (letters[magChar] = ++letters[magChar])
       : (letters[magChar] = 1);
   }
+  console.log("LETTTERS", letters)
   for (let j = 0; j < ransomNote.length; j++) {
     let ransomeChar = ransomNote[j];
     if (!letters[ransomeChar]) return false;
@@ -20,6 +21,6 @@ var canConstruct = function (ransomNote, magazine) {
   return true;
 };
 
-console.log(canConstruct("aabbaa", "aba"))
+console.log("expected true and got:", canConstruct("aba","aabbaa"))
 
 module.exports = canConstruct;

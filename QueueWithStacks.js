@@ -43,3 +43,5 @@ queue.pop()
 console.log(queue)// [3,1,5]
 console.log(queue.peek())
 console.log(queue.empty())
+
+//pretty sure pop is doign what shift would normally do because this is supposed to act as a FIFO queue and so we think of it that way not like a stack which would be LIFO

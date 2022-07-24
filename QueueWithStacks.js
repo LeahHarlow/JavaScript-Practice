@@ -22,7 +22,7 @@ MyQueue.prototype.push = function(x) {
 };
 
 MyQueue.prototype.pop = function(){
-  return this.stack.shift();
+  return this.queue.shift();
 }
 
 MyQueue.prototype.peek = function() {
@@ -38,4 +38,8 @@ queue.push(1)
 queue.push(3)
 queue.push(1)
 queue.push(5)
-console.log(queue)
+console.log(queue)// [1,3,1,5]
+queue.pop()
+console.log(queue)// [3,1,5]
+console.log(queue.peek())
+console.log(queue.empty())

@@ -29,3 +29,15 @@
 // 6. 1 step + 2 steps + 2 steps
 // 7. 2 steps + 1 step + 2 steps
 // 8. 2 steps + 2 steps + 1 step
+
+var obj = {}
+const  climbStairs = (n) => {
+if (obj[n]) return obj[n]
+if (n <= 3) return n
+
+var rez = climbStairs(n - 1) + climbStairs(n - 2)
+obj[n] = rez
+return rez
+};
+
+console.log(climbStairs(3))

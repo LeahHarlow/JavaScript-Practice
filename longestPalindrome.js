@@ -53,6 +53,28 @@
 //   }
 
 //   return palindromeCharCount + unpairedChars.size >= 1 ? 1 : 0;
+// };
+
+var longestPalindrome = function(s) {
+  let letterCount = {}
+  let total=0;
+  for(let i=0; i<s.length; i++){
+      if(!letterCount[s[i]]){
+          letterCount[s[i]] = 1;
+      } else {
+          letterCount[s[i]]++;
+          if(letterCount[s[i]] > 1) {
+              total += 2;
+              delete letterCount[s[i]];
+          }
+      }
+  }
+
+  const remainingLetters = Object.keys(letterCount);
+  if(remainingLetters.length > 0){
+      total++;
+  }
+  return total;
 };
 
 console.log("expected 7 and got", longestPalindrome("abccccdd"))

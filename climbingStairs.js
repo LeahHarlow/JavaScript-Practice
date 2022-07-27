@@ -41,3 +41,5 @@ return rez
 };
 
 console.log(climbStairs(3))
+
+//for some yet unknown reason this blows out the callstack if we dont use memoization when we get up to the 40's for input size. It at least takes longer than 4 seconds and hits the cutoff. This memoization could optimize fib.js too. 

@@ -5,27 +5,25 @@
 // Output: 7
 // Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
 
-const  longestPalindrome = (s) => {
-  let letterCount = {};
+const longestPalindrome = (s) => {
+  if (s.length === 1) return 1;
+  let letters = {};
   let longest = 0;
 
-  //this bit deals with all the pairs of numbers
   for (let i = 0; i < s.length; i++) {
-    let char = s[i];
-    if(!letterCount[char]) {
-      letterCount[char] = 1
-    } else{
-      letterCount[char]++;
-      if (letterCount[char] > 1) {
+    let letter = s[i];
+    if (!letters[letter]) {
+      letters[letter] = 1;
+    } else {
+      letters[letter] = ++letters[letter];
+      if (letters[letter] === 2) {
         longest += 2;
-        delete letterCount[char];
+        delete(letters[letter])
       }
     }
   }
-  //at this point our object will just be the single letters
-  const remainingLetters = Object.keys(letterCount);
-  // if there are single letters, add one of them that can be at the center of the palindrome
-  if (remainingLetters.length > 0) {
+  let remainingLetters = Object.keys(letters);
+  if(remainingLetters.length){
     longest++;
   }
   return longest;

@@ -9,6 +9,7 @@ const  longestPalindrome = (s) => {
   let letterCount = {};
   let longest = 0;
 
+  //this bit deals with all the pairs of numbers
   for (let i = 0; i < s.length; i++) {
     let char = s[i];
     if(!letterCount[char]) {
@@ -21,8 +22,9 @@ const  longestPalindrome = (s) => {
       }
     }
   }
-
+  //at this point our object will just be the single letters
   const remainingLetters = Object.keys(letterCount);
+  // if there are single letters, add one of them that can be at the center of the palindrome
   if (remainingLetters.length > 0) {
     longest++;
   }

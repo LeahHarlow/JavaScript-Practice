@@ -21,7 +21,7 @@ class BinaryTree {
       return this;
     }
     let current = this.root;
-    while (true) {
+    while (current) {
       if (val === current.val) return undefined; //no duplicates
       if (val < current.val) {
         if (current.left === null) {

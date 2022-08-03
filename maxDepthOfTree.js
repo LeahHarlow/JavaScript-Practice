@@ -3,10 +3,10 @@
 // A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 
 class Node {
-  constructor(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
+  constructor(val, left, right) {
+    this.val = val === undefined ? 0 : val;
+    this.left = left === undefined ? null : left;
+    this.right = right === undefined ? null : right;
   }
 }
 
@@ -42,11 +42,11 @@ class BinaryTree {
 }
 
 const tree = new BinaryTree();
-tree.insert(3)
-tree.insert(9)
-tree.insert(20)
-tree.insert(15)
-tree.insert(7)
+tree.insert(3);
+tree.insert(9);
+tree.insert(20);
+tree.insert(15);
+tree.insert(7);
 
 const maxDepth = function (root) {
   if (!root) {

@@ -1,14 +1,10 @@
 // Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
-var containsDuplicate = function(nums) {
+const containsDuplicate = function(nums) {
   let numsCount = {};
   for(let i = 0; i < nums.length; i++){
-      numsCount[nums[i]] = numsCount[nums[i]] ? ++numsCount[nums[i]] : 1;
-  }
-  console.log(numsCount)
-  for(let key in numsCount) {
-      console.log(numsCount[key])
-      if(numsCount[key] > 1) return true;
+      if(numsCount[nums[i]]) return true;
+      numsCount[nums[i]] = 1;
   }
   return false
 };

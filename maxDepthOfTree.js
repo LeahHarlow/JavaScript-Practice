@@ -39,14 +39,25 @@ class BinaryTree {
       }
     }
   }
+  DFSInOrder(){
+    let visited = [];
+    function traverse(node){
+      if(node.left) traverse(node.left);
+      visited.push(node.val);
+      if(node.right) traverse(node.right);
+    }
+    traverse(this.root)
+    console.log(visited)
+    return visited;
+  }
 }
 
 const tree = new BinaryTree();
 tree.insert(3);
 tree.insert(9);
 tree.insert(20);
-tree.insert(15);
-tree.insert(7);
+ tree.insert(15);
+//tree.insert(7);
 
 const maxDepth = function (root) {
   if (!root) {
@@ -60,4 +71,5 @@ const maxDepthOpt = function (root) {
   return !root ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 };
 
-console.log(maxDepth(tree.root));
+// console.log(tree, maxDepthOpt(tree.root));
+console.log(tree.DFSInOrder())

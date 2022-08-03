@@ -53,9 +53,9 @@ class BinaryTree {
 }
 
 const tree = new BinaryTree();
-tree.insert(8);
+tree.insert(3);
 tree.insert(9);
-tree.insert(10);
+tree.insert(20);
 tree.insert(15);
 tree.insert(7);
 
@@ -67,9 +67,13 @@ const maxDepth = function (root) {
   }
 };
 
-const maxDepthOpt = function (root) {
-  return !root ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
-};
+//shorter but harder to read
+// const maxDepthOpt = function (root) {
+//   return !root ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+// };
 
 console.log(maxDepth(tree.root));
 console.log(tree.DFSInOrder());
+
+// Runtime: 78 ms, faster than 85.94% of JavaScript online submissions for Maximum Depth of Binary Tree.
+// Memory Usage: 44.3 MB, less than 98.76% of JavaScript online submissions for Maximum Depth of Binary Tree.

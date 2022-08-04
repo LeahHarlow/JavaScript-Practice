@@ -12,3 +12,5 @@ const reverseList = (head) => {
    }
    return prev;
 }
+
+//honestly writing the list is a biotch just trust me it works

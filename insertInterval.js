@@ -16,14 +16,7 @@ const insertInterval = (intervals, newInt) => {
       intervals.push(newInt);
       return intervals;
     }
-    // if(currentInt[0] < newInt[0] && currentInt[1] < newInt[1]){
-    //   newIntervals.push([currentInt[0], newInt[1]]);
-    //   console.log(newIntervals)
-    // }
-    // if(currentInt[0] > newInt[0] && currentInt[1] > newInt[1]){
-    //   newIntervals.push([currentInt[0], newInt[1]]);
-    //   console.log(newIntervals)
-    // }
+    //now we need to do the merging
   }
   console.log(newIntervals);
   return newIntervals;

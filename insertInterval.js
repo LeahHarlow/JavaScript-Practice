@@ -4,30 +4,39 @@
 
 // Return intervals after the insertion.
 
+// const insertInterval = (intervals, newInt) => {
+//   let newIntervals = [];
+//   for(let i = 0; i < intervals.length; i++){
+//     let currentInt = intervals[i];
+//     let set = [];
+//     if(currentInt[0] > newInt[0] && currentInt[1] < newInt[1]){
+//       intervals.shift(newInt);
+//       console.log(intervals)
+//       return intervals;
+//     }
+//     if(currentInt[0] < newInt[0] && currentInt[1] > newInt[1]){
+//       newIntervals.push(currentInt);
+//       console.log(newIntervals)
+//     }
+//     if(currentInt[0] < newInt[0] && currentInt[1] < newInt[1]){
+//       newIntervals.push([currentInt[0], newInt[1]]);
+//       console.log(newIntervals)
+//     }
+//     if(currentInt[0] > newInt[0] && currentInt[1] > newInt[1]){
+//       newIntervals.push([currentInt[0], newInt[1]]);
+//       console.log(newIntervals)
+//     }
+//   }
+// }
+
 const insertInterval = (intervals, newInt) => {
-  let newIntervals = [];
-  for(let i = 0; i < intervals.length; i++){
-    let currentInt = intervals[i];
-    let set = [];
-    if(currentInt[0] > newInt[0] && currentInt[1] < newInt[1]){
-      intervals.shift(newInt);
-      console.log(intervals)
-      return intervals;
-    }
-    if(currentInt[0] < newInt[0] && currentInt[1] > newInt[1]){
-      newIntervals.push(currentInt);
-      console.log(newIntervals)
-    }
-    if(currentInt[0] < newInt[0] && currentInt[1] < newInt[1]){
-      newIntervals.push([currentInt[0], newInt[1]]);
-      console.log(newIntervals)
-    }
-    if(currentInt[0] > newInt[0] && currentInt[1] > newInt[1]){
-      newIntervals.push([currentInt[0], newInt[1]]);
-      console.log(newIntervals)
-    }
+  let overlap = true;
+  while(overlap){
+    //basically the idea here is keep updating the set until theres no overlap and then return the whole thing.
   }
 }
+
+
 
 
 console.log('expected [[1,5],[6,9]] and got: ', insertInterval([[1,3],[6,9]],[2,5]))

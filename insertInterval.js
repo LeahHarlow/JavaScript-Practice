@@ -1,46 +1,44 @@
-// You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents the start and end of another interval.
+// You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newIntervalerval = [start, end] that represents the start and end of another interval.
 
 // Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).
 
 // Return intervals after the insertion.
 
-const insertInterval = (intervals, newInt) => {
-  if (intervals.length === 0) return newInt;
+const insertInterval = (intervals, newInterval) => {
+  if (intervals.length === 0) return [newInterval];
 
-  let currentIdx = 0;
+  let current = 0;
 
-  while (
-    currentIdx < intervals.length &&
-    intervals[currentIdx][0] < newInt[0]
-  ) {
-    currentIdx++;
+  while (current < intervals.length && intervals[current][0] < newInterval[0]) {
+    current++;
   }
+  intervals.splice(current, 0, newInterval);
 
-  intervals.splice(currentIdx, 0, newInt);
-
-if(currentIdx !== intervals.length-1){
-  let endPointer = currentIdx + 1;
-  if (intervals[endPointer][0] <= newInt[1]) {
-    while (
-      intervals[endPointer] < intervals.length
-    ) {
-      endPointer++;
+  if (current !== intervals.length - 1) {
+    let pointer = current + 1;
+    if (intervals[pointer][0] <= newInterval[1]) {
+      while (
+        pointer < intervals.length &&
+        intervals[pointer][0] <= newInterval[1]
+      ) {
+        pointer++;
+      }
+      newInterval[1] = Math.max(newInterval[1], intervals[pointer - 1][1]);
+      intervals.splice(current + 1, pointer - (current + 1));
     }
-    newInt[1] = Math.max(newInt[1], intervals[endPointer - 1][1]);
-    intervals.splice(currentIdx + 1, endPointer - (currentIdx + 1));
   }
-}
-  if (currentIdx !== 0) {
-    if (intervals[currentIdx - 1][1] >= newInt[0]) {
-      newInt[0] = intervals[currentIdx - 1][0];
-      newInt[1] = Math.max(newInt[1], intervals[currentIdx - 1][1]);
-      intervals.splice(currentIdx - 1, 1);
+
+  if (current !== 0) {
+    if (intervals[current - 1][1] >= newInterval[0]) {
+      newInterval[0] = intervals[current - 1][0];
+      newInterval[1] = Math.max(newInterval[1], intervals[current - 1][1]);
+      intervals.splice(current - 1, 1);
     }
   }
   return intervals;
 };
 
-// const insertInterval = (intervals, newInt) => {
+// const insertInterval = (intervals, newInterval) => {
 //   let overlap = true;
 //   while(overlap){
 //     //basically the idea here is keep updating the set until theres no overlap and then return the whole thing.

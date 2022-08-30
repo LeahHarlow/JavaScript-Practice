@@ -6,40 +6,34 @@
 
 const insertInterval = (intervals, newInt) => {
   let currentIdx = 0;
+  let endPointer = currentIdx + 1;
 
   if (intervals.length === 0) return newInt;
 
-  for (let i = 0; i < intervals.length; i++) {
-    let currentInt = intervals[i];
-    if (newInt[1] < currentInt[0]) {
-      intervals.unshift(newInt);
-      return intervals;
-    }
-    if (newInt[0] > currentInt[1]) {
-      intervals.push(newInt);
-      return intervals;
-    }
-    //finding the starting insertion point
-    while (
-      currentIdx < intervals.length &&
-      intervals[currentIdx][0] < newInt[0]
-    ) {
-      currentIdx++;
-    }
-    intervals.splice(currentIdx, 0, newInt);
-    let endPointer = currentIdx + 1;
-    if(intervals[endPointer][0] <= newInt[1]);
-    while(intervals[endPointer] < intervals.length && intervals[endPointer][0] < newInt[1]){
-      endPointer++;
-    }
-    newInt[1] = Math.max(newInt[1], intervals[endPointer -1][1]);
-    intervals.splice(currentIdx + 1, endPointer - (currentIdx + 1));
+  while (
+    currentIdx < intervals.length &&
+    intervals[currentIdx][0] < newInt[0]
+  ) {
+    currentIdx++;
   }
-  if(currentIdx !== 0){
-    if(intervals[currentIdx -1][1] >= newInt[0]){
-      newInt[0] = intervals[currentIdx -1][0];
-      newInt[1] = Math.max(newInt[1],intervals[currentIdx -1][1]);
-      intervals.splice(currentIdx -1, 1)
+
+  intervals.splice(currentIdx, 0, newInt);
+
+  if (intervals[endPointer][0] <= newInt[1]);
+  while (
+    intervals[endPointer] < intervals.length &&
+    intervals[endPointer][0] < newInt[1]
+  ) {
+    endPointer++;
+  }
+  newInt[1] = Math.max(newInt[1], intervals[endPointer - 1][1]);
+  intervals.splice(currentIdx + 1, endPointer - (currentIdx + 1));
+
+  if (currentIdx !== 0) {
+    if (intervals[currentIdx - 1][1] >= newInt[0]) {
+      newInt[0] = intervals[currentIdx - 1][0];
+      newInt[1] = Math.max(newInt[1], intervals[currentIdx - 1][1]);
+      intervals.splice(currentIdx - 1, 1);
     }
   }
   return intervals;
@@ -72,5 +66,5 @@ console.log(
     [10, 11]
   )
 );
-// console.log('expected [[1,5],[6,9]] and got: ', insertInterval([[1,3],[6,9]],[2,5]))
-// console.log('expected [[1,2],[3,10],[12,16]] and got: ', insertInterval([[1,2],[3,5],[6,7],[8,10],[12,16]],[4,8]))
+console.log('expected [[1,5],[6,9]] and got: ', insertInterval([[1,3],[6,9]],[2,5]))
+console.log('expected [[1,2],[3,10],[12,16]] and got: ', insertInterval([[1,2],[3,5],[6,7],[8,10],[12,16]],[4,9]))

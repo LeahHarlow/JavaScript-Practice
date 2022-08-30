@@ -5,17 +5,21 @@
 // Return intervals after the insertion.
 
 const insertInterval = (intervals, newInt) => {
+  let currentIdx = 0;
+
   if (intervals.length === 0) return newInt;
+
   for (let i = 0; i < intervals.length; i++) {
     let currentInt = intervals[i];
     if (newInt[1] < currentInt[0]) {
       intervals.unshift(newInt);
+      return intervals;
     }
     if (newInt[0] > currentInt[1]) {
       intervals.push(newInt);
+      return intervals;
     }
     //finding the starting insertion point
-    let currentIdx = 0;
     while (
       currentIdx < intervals.length &&
       intervals[currentIdx][0] < newInt[0]
@@ -30,6 +34,13 @@ const insertInterval = (intervals, newInt) => {
     }
     newInt[1] = Math.max(newInt[1], intervals[endPointer -1][1]);
     intervals.splice(currentIdx + 1, endPointer - (currentIdx + 1));
+  }
+  if(currentIdx !== 0){
+    if(intervals[currentIdx -1][1] >= newInt[0]){
+      newInt[0] = intervals[currentIdx -1][0];
+      newInt[1] = Math.max(newInt[1],intervals[currentIdx -1][1]);
+      intervals.splice(currentIdx -1, 1)
+    }
   }
   return intervals;
 };

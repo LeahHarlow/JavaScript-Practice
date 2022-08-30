@@ -5,6 +5,7 @@
 // Return intervals after the insertion.
 
 const insertInterval = (intervals, newInt) => {
+  if (intervals.length === 0) return newInt
   let newIntervals = [];
   for(let i = 0; i < intervals.length; i++){
     let currentInt = intervals[i];
@@ -16,7 +17,11 @@ const insertInterval = (intervals, newInt) => {
       intervals.push(newInt);
       return intervals;
     }
-    //now we need to do the merging
+    //finding the starting insertion point
+    let currentIdx = 0;
+    while(currentIdx < intervals.length && intervals[currentIdx][0] < newInt[0]){
+      currentIdx++
+    }
   }
   console.log(newIntervals);
   return newIntervals;

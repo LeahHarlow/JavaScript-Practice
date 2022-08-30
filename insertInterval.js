@@ -38,13 +38,6 @@ const insertInterval = (intervals, newInterval) => {
   return intervals;
 };
 
-// const insertInterval = (intervals, newInterval) => {
-//   let overlap = true;
-//   while(overlap){
-//     //basically the idea here is keep updating the set until theres no overlap and then return the whole thing.
-//   }
-// }
-
 console.log(
   'expected [[2,5],[6,9],[10,11]] and got: ',
   insertInterval(

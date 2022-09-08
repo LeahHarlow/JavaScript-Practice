@@ -83,8 +83,8 @@ const addBinary = (a, b) => {
     return binarySum.reverse().join('')
 };
 
-console.log('expected 100 and got:', addBinary('11', '1')); //adds to 4
-console.log('expected 10101 and got:', addBinary('1010', '1011')); //adds to 21
+console.log('expected 100 and got:', addBinary('11', '1')); //adds up to 4
+console.log('expected 10101 and got:', addBinary('1010', '1011')); //adds up to 21
 ///1010
 ///1011
 //10101

@@ -10,12 +10,12 @@ const lengthOfLongestSubstring = function (s) {
     //if the current character is not already in the string add it to the current string and keep checking.
     if (!currStr.includes(char)) {
       currStr += char;
-      console.log('CURRSTR', currStr);
+      //console.log('CURRSTR', currStr);
     }
     //if we find char to be in the current string already, save the longest string to longestStr, and reset the current string to be the current char then continue;
     else {
       longestStr = longestStr.length >= currStr.length ? longestStr : currStr;
-      console.log('LONGESTSTR', longestStr);
+      //console.log('LONGESTSTR', longestStr);
       currStr = char;
     }
   }
@@ -24,3 +24,5 @@ const lengthOfLongestSubstring = function (s) {
 };
 
 console.log('expected 3 and got :', lengthOfLongestSubstring('abcabcbb'));
+console.log('expected 1 and got :', lengthOfLongestSubstring(' '));
+console.log('expected 2 and got :', lengthOfLongestSubstring('au'));

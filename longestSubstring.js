@@ -27,23 +27,23 @@
 const lengthOfLongestSubstring = function (s) {
   let longestLength = 0;
   let window = [];
-  for(let i = 0; i < s.length; i++){
+  for (let i = 0; i < s.length; i++) {
     let char = s[i];
-    if(!window.includes(char)){
+    if (!window.includes(char)) {
       window.push(char);
-      longestLength =  longestLength >= window.length ?  longestLength : window.length;
+      longestLength =
+        longestLength >= window.length ? longestLength : window.length;
     } else {
       // find the first instance of the repeater;
-      let cut = window.indexOf(char)
+      let cut = window.indexOf(char);
       //remove the beginning of the window to after the first instance of the repeat char;
-      window.splice(0, cut + 1);
+       window = window.slice(cut + 1);
       //lastly add the current char
       window.push(char);
     }
   }
-  return Math.max(longestLength, window.length)
-}
-
+  return Math.max(longestLength, window.length);
+};
 
 console.log('expected 3 and got :', lengthOfLongestSubstring('abcabcbb'));
 console.log('expected 1 and got :', lengthOfLongestSubstring(' '));

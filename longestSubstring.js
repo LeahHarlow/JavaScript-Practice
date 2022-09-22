@@ -16,7 +16,8 @@ const lengthOfLongestSubstring = function (s) {
     else {
       longestStr = longestStr.length >= currStr.length ? longestStr : currStr;
       //console.log('LONGESTSTR', longestStr);
-      currStr = char;
+      let cut = currStr.indexOf(char)
+      currStr = currStr.slice(cut);
     }
   }
   // once weve run through the whole string return the longet between longest and current

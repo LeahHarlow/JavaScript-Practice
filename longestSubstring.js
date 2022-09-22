@@ -13,7 +13,7 @@ const lengthOfLongestSubstring = function (s) {
       console.log('CURRSTR', currStr);
     }
     //if we find char to be in the current string already, save the longest string to longestStr, and reset the current string to be the current char then continue;
-    if (currStr.includes(char)) {
+    else {
       longestStr = longestStr.length >= currStr.length ? longestStr : currStr;
       console.log('LONGESTSTR', longestStr);
       currStr = char;

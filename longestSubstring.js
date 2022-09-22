@@ -26,3 +26,4 @@ const lengthOfLongestSubstring = function (s) {
 console.log('expected 3 and got :', lengthOfLongestSubstring('abcabcbb'));
 console.log('expected 1 and got :', lengthOfLongestSubstring(' '));
 console.log('expected 2 and got :', lengthOfLongestSubstring('au'));
+console.log('expected 3  and got :', lengthOfLongestSubstring('dvdf'));

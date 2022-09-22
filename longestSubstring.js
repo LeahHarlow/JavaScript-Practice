@@ -24,43 +24,26 @@
 //   return Math.max(longestStr.length, currStr.length);
 // };
 
-// const lengthOfLongestSubstring = function (s) {
-//   let longestLength = 0
-//   let window = [];
-//   for(let i = 0; i < s.length; i++){
-//     let char = s[i];
-//     if(!window.includes(char)){
-//       window.push(char);
-//     } else {
-//       window.unshift()
-//       // good start but this doesnt work either if the repeat char isnt the first one in window
-//     }
-//   }
-//   return Math.max(longestLength, window.length)
-// }
-
 const lengthOfLongestSubstring = function (s) {
-  let start = 0;
-  let end = 1;
-  let longest = end - start;
-
-  while (end < s.length - 1 && start <= end) {
-    // right? <= anywhere?
-    if (s[start] !== s[end] && ) {
-      end++;
-      let currentLength = end - start;
-      longest = Math.max(longest, currentLength);
-    }
-    else if(s[start] === s[end]){
-      end++;
-      start++;
-      let currentLength = end - start;
-      longest = Math.max(longest, currentLength);
+  let longestLength = 0;
+  let window = [];
+  for(let i = 0; i < s.length; i++){
+    let char = s[i];
+    if(!window.includes(char)){
+      window.push(char);
+      longestLength =  longestLength >= window.length ?  longestLength : window.length;
+    } else {
+      // find the first instance of the repeater;
+      let cut = window.indexOf(char)
+      //remove the beginning of the window to after the first instance of the repeat char;
+      window.splice(0, cut + 1);
+      //lastly add the current char
+      window.push(char);
     }
   }
+  return Math.max(longestLength, window.length)
+}
 
-  return longest;
-};
 
 console.log('expected 3 and got :', lengthOfLongestSubstring('abcabcbb'));
 console.log('expected 1 and got :', lengthOfLongestSubstring(' '));

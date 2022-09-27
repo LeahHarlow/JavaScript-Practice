@@ -49,3 +49,7 @@ console.log('expected 3 and got :', lengthOfLongestSubstring('abcabcbb'));
 console.log('expected 1 and got :', lengthOfLongestSubstring(' '));
 console.log('expected 2 and got :', lengthOfLongestSubstring('au'));
 console.log('expected 3  and got :', lengthOfLongestSubstring('dvdf'));
+
+let nums = [1,2,3]
+nums[10] = 11;
+console.log(nums)

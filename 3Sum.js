@@ -22,3 +22,16 @@
 // Output: [[0,0,0]]
 // Explanation: The only possible triplet sums up to 0.
 
+const threeSum = function(nums) {
+  let triplets = [];
+  if(nums.length < 3) return [];
+  if(nums.length === 3){
+      if(nums[0] + nums[1] + nums[2] === 0){
+          return nums;
+      } else {
+          return [];
+      }
+  }
+
+  return triplets;
+};

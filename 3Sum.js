@@ -33,21 +33,29 @@ const threeSum = function (nums) {
     }
   }
   for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      let needed = 0 + (nums[i] + nums[j]);
-      if (
-        nums.includes(needed) &&
-        nums.indexOf(needed) !== i &&
-        nums.indexOf(needed) !== j
-      ) {
-        triplets.push([needed, nums[i], nums[j]]);
+    for (let j = 0; j < nums.length; j++) {
+      if (i !== j) {
+        //console.log(nums[i], nums[j])
+        let needed = 0 + (nums[i] + nums[j]);
+        if (
+          nums.includes(needed) &&
+          nums.indexOf(needed) !== i &&
+          nums.indexOf(needed) !== j
+        ) {
+          let currentTriplet = [needed, nums[i], nums[j]];
+          if (!triplets.includes(currentTriplet)) {
+            triplets.push(currentTriplet);
+          } else {
+            continue;
+          }
+        }
+      } else {
+        continue;
       }
     }
   }
   return triplets;
 };
-
-
 
 //can sort it, pointers?
 //helper?

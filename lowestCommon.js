@@ -32,3 +32,5 @@ const lowestCommonAncestor = function (root, nodeOne, nodeTwo) {
 
   return undefined;
 };
+
+lowestCommonAncestor()

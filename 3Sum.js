@@ -74,26 +74,44 @@
 
 //ok new idea:
 const threeSum = function (nums) {
+  //edge case if there arent 3 elements return [];
+  if (nums.length < 3) return [];
+
   let triplets = [];
-  let sortedNums = nums.sort((a, b) => a - b);
+  //sort is O(NlogN) and will save us from O(N^2)
+  nums.sort((a, b) => a - b);
 
-  let current = 0;
-  let left = 0;
-  let right = sortedNums.length - 1;
+  let mustEqual = 0;
+  let right = nums.length - 1;
 
-  while (current <= sortedNums.length && left < right) {
-    let currentNum = sortedNums[current];
-    if(currentNum + sortedNums[left] + sortedNums[right] === 0){
-      triplets.push([currentNum, sortedNums[left], sortedNums[right]])
-    } else if(currentNum + sortedNums[left] + sortedNums[right] > 0){
-      right--;
-    }else if(currentNum + sortedNums[left] + sortedNums[right] < 0){
-      left++;
-    }
-    current++;
+  //first as in first in sorted set, so if it exceeds 0 we can stop looking
+  for(let first = 0; first < nums.length; first++){
+    if(nums[first] > mustEqual) break;
   }
+  // if we hit a duplicate number skip is bc we already checked.
+  if (first > 0 && nums[first] === nums[first - 1]){
+    continue
+  }
+
+  // second will represent the second element in the triplet,
+  //we will either increase second or decrease third until they meet and
+  // increase first once they do, showing weve checked everything
+  let second = first + 1;
+
 
   return triplets;
 };
 
 threeSum([-1, 2, 0, 1]);
+
+// while (current <= nums.length && left < right) {
+  //   let currentNum = nums[current];
+  //   if(currentNum + nums[left] + nums[right] === 0){
+  //     triplets.push([currentNum, nums[left], nums[right]])
+  //   } else if(currentNum + nums[left] + nums[right] > 0){
+  //     right--;
+  //   }else if(currentNum + nums[left] + nums[right] < 0){
+  //     left++;
+  //   }
+  //   current++;
+  // }

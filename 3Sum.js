@@ -22,40 +22,40 @@
 // Output: [[0,0,0]]
 // Explanation: The only possible triplet sums up to 0.
 
-const threeSum = function (nums) {
-  let triplets = [];
-  if (nums.length < 3) return [];
-  if (nums.length === 3) {
-    if (nums[0] + nums[1] + nums[2] === 0) {
-      return nums;
-    } else {
-      return [];
-    }
-  }
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 0; j < nums.length; j++) {
-      if (i !== j) {
-        //console.log(nums[i], nums[j])
-        let needed = 0 + (nums[i] + nums[j]);
-        if (
-          nums.includes(needed) &&
-          nums.indexOf(needed) !== i &&
-          nums.indexOf(needed) !== j
-        ) {
-          let currentTriplet = [needed, nums[i], nums[j]];
-          if (!triplets.includes(currentTriplet)) {
-            triplets.push(currentTriplet);
-          } else {
-            continue;
-          }
-        }
-      } else {
-        continue;
-      }
-    }
-  }
-  return triplets;
-};
+// const threeSum = function (nums) {
+//   let triplets = [];
+//   if (nums.length < 3) return [];
+//   if (nums.length === 3) {
+//     if (nums[0] + nums[1] + nums[2] === 0) {
+//       return nums;
+//     } else {
+//       return [];
+//     }
+//   }
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = 0; j < nums.length; j++) {
+//       if (i !== j) {
+//         //console.log(nums[i], nums[j])
+//         let needed = 0 + (nums[i] + nums[j]);
+//         if (
+//           nums.includes(needed) &&
+//           nums.indexOf(needed) !== i &&
+//           nums.indexOf(needed) !== j
+//         ) {
+//           let currentTriplet = [needed, nums[i], nums[j]];
+//           if (!triplets.includes(currentTriplet)) {
+//             triplets.push(currentTriplet);
+//           } else {
+//             continue;
+//           }
+//         }
+//       } else {
+//         continue;
+//       }
+//     }
+//   }
+//   return triplets;
+// };
 
 //can sort it, pointers?
 //helper?
@@ -64,7 +64,36 @@ const threeSum = function (nums) {
 
 //ok what if we...
 //sort nums
-// make two pointers at start and end
-//see what 0 + their sum equals
-// then check to see if that missing piece exists in the array and isnt the same index as one of them
-//
+//while current index isnt the end and left pointer doesnt equal right pointer
+//see what 0 - nums[current] is
+//see if the sum of the two pointers equals that
+// if its too high move right down
+// if its too low move left up.
+// if we find one that equals 0, add it to triplets
+// otherwise continue to the end
+
+//ok new idea:
+const threeSum = function (nums) {
+  let triplets = [];
+  let sortedNums = nums.sort((a, b) => a - b);
+
+  let current = 0;
+  let left = 0;
+  let right = sortedNums.length - 1;
+
+  while (current <= sortedNums.length && left < right) {
+    let currentNum = sortedNums[current];
+    if(currentNum + sortedNums[left] + sortedNums[right] === 0){
+      triplets.push([currentNum, sortedNums[left], sortedNums[right]])
+    } else if(currentNum + sortedNums[left] + sortedNums[right] > 0){
+      right--;
+    }else if(currentNum + sortedNums[left] + sortedNums[right] < 0){
+      left++;
+    }
+    current++;
+  }
+
+  return triplets;
+};
+
+threeSum([-1, 2, 0, 1]);

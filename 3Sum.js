@@ -22,16 +22,41 @@
 // Output: [[0,0,0]]
 // Explanation: The only possible triplet sums up to 0.
 
-const threeSum = function(nums) {
+const threeSum = function (nums) {
   let triplets = [];
-  if(nums.length < 3) return [];
-  if(nums.length === 3){
-      if(nums[0] + nums[1] + nums[2] === 0){
-          return nums;
-      } else {
-          return [];
-      }
+  if (nums.length < 3) return [];
+  if (nums.length === 3) {
+    if (nums[0] + nums[1] + nums[2] === 0) {
+      return nums;
+    } else {
+      return [];
+    }
   }
-
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      let needed = 0 + (nums[i] + nums[j]);
+      if (
+        nums.includes(needed) &&
+        nums.indexOf(needed) !== i &&
+        nums.indexOf(needed) !== j
+      ) {
+        triplets.push([needed, nums[i], nums[j]]);
+      }
+    }
+  }
   return triplets;
 };
+
+
+
+//can sort it, pointers?
+//helper?
+// find all sums of two and see what we need? need to keep track of indices though, frequency counter?
+// could triple loop it but that would be gnarly
+
+//ok what if we...
+//sort nums
+// make two pointers at start and end
+//see what 0 + their sum equals
+// then check to see if that missing piece exists in the array and isnt the same index as one of them
+//

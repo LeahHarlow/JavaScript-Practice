@@ -90,13 +90,16 @@ const threeSum = function (nums) {
   }
   // if we hit a duplicate number skip is bc we already checked.
   if (first > 0 && nums[first] === nums[first - 1]){
-    continue
+    continue;
   }
 
   // second will represent the second element in the triplet,
   //we will either increase second or decrease third until they meet and
   // increase first once they do, showing weve checked everything
   let second = first + 1;
+
+  // then set third to be the end
+  let third = sums.length - 1;
 
 
   return triplets;

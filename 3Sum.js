@@ -78,43 +78,57 @@ const threeSum = function (nums) {
   if (nums.length < 3) return [];
 
   let triplets = [];
-  //sort is O(NlogN) and will save us from O(N^2)
+  //sort is O(NlogN) doesnt matter coz its already O(N^2)
   nums.sort((a, b) => a - b);
 
   let mustEqual = 0;
-  let right = nums.length - 1;
 
   //first as in first in sorted set, so if it exceeds 0 we can stop looking
-  for(let first = 0; first < nums.length; first++){
-    if(nums[first] > mustEqual) break;
+  for (let first = 0; first < nums.length; first++) {
+    if (nums[first] > mustEqual) break;
+    // if we hit a duplicate number skip is bc we already checked.
+    if (first > 0 && nums[first] === nums[first - 1]) continue;
+
+    // second will represent the second element in the triplet,
+    //we will either increase second or decrease third until they meet and
+    // increase first once they do, showing weve checked everything
+    let second = first + 1;
+
+    // then set third to be the end
+    let third = nums.length - 1;
+
+    //I think this can be refactored similarly to my first try to avoid quadradic time.
+    while (second < third) {
+      let sum = nums[first] + nums[second] + nums[third];
+      if (sum === mustEqual)
+        triplets.push([nums[first], nums[second], nums[third]]);
+      while (nums[second] === nums[second + 1]) second++;
+      while (nums[third] === nums[third - 1]) third--;
+
+      second++;
+      third--;
+
+      if (sum < mustEqual) {
+        second++;
+      } else {
+        third--;
+      }
+    }
   }
-  // if we hit a duplicate number skip is bc we already checked.
-  if (first > 0 && nums[first] === nums[first - 1]){
-    continue;
-  }
-
-  // second will represent the second element in the triplet,
-  //we will either increase second or decrease third until they meet and
-  // increase first once they do, showing weve checked everything
-  let second = first + 1;
-
-  // then set third to be the end
-  let third = sums.length - 1;
-
-
   return triplets;
 };
 
 threeSum([-1, 2, 0, 1]);
 
+//this might be the refactor we need
 // while (current <= nums.length && left < right) {
-  //   let currentNum = nums[current];
-  //   if(currentNum + nums[left] + nums[right] === 0){
-  //     triplets.push([currentNum, nums[left], nums[right]])
-  //   } else if(currentNum + nums[left] + nums[right] > 0){
-  //     right--;
-  //   }else if(currentNum + nums[left] + nums[right] < 0){
-  //     left++;
-  //   }
-  //   current++;
-  // }
+//   let currentNum = nums[current];
+//   if(currentNum + nums[left] + nums[right] === 0){
+//     triplets.push([currentNum, nums[left], nums[right]])
+//   } else if(currentNum + nums[left] + nums[right] > 0){
+//     right--;
+//   }else if(currentNum + nums[left] + nums[right] < 0){
+//     left++;
+//   }
+//   current++;
+// }

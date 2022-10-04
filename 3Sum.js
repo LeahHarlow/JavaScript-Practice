@@ -81,11 +81,11 @@ const threeSum = function (nums) {
   //sort is O(NlogN) doesnt matter coz its already O(N^2)
   nums.sort((a, b) => a - b);
 
-  let mustEqual = 0;
+  let target = 0;
 
   //first as in first in sorted set, so if it exceeds 0 we can stop looking
-  for (let first = 0; first < nums.length; first++) {
-    if (nums[first] > mustEqual) break;
+  for (let first = 0; first < nums.length - 2; first++) {
+    if (nums[first] > target) break;
     // if we hit a duplicate number skip is bc we already checked.
     if (first > 0 && nums[first] === nums[first - 1]) continue;
 
@@ -100,15 +100,15 @@ const threeSum = function (nums) {
     //I think this can be refactored similarly to my first try to avoid quadradic time.
     while (second < third) {
       let sum = nums[first] + nums[second] + nums[third];
-      if (sum === mustEqual)
+
+      if (sum === target) {
         triplets.push([nums[first], nums[second], nums[third]]);
-      while (nums[second] === nums[second + 1]) second++;
-      while (nums[third] === nums[third - 1]) third--;
-
-      second++;
-      third--;
-
-      if (sum < mustEqual) {
+        
+        while (nums[second] === nums[second + 1]) second++;
+        while (nums[third] === nums[third - 1]) third--;
+        second++;
+        third--;
+      } else if (sum < target) {
         second++;
       } else {
         third--;
